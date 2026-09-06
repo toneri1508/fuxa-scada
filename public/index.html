@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>FUXA-mini - Danh sach man hinh</title>
+<link rel="stylesheet" href="css/common.css">
+</head>
+<body>
+<div class="home-wrap">
+  <h1>FUXA-mini</h1>
+  <p style="text-align:center;color:#aab2c0">SCADA toi gian cho PLC Mitsubishi - MC Protocol TCP/IP</p>
+
+  <div class="new-project-row">
+    <input id="newName" placeholder="Ten man hinh moi (vd: Line1)">
+    <button class="primary" onclick="createNew()">+ Tao moi</button>
+    <button onclick="openSettings()">Cai dat ket noi PLC</button>
+  </div>
+
+  <div id="list"></div>
+</div>
+
+<div id="settingsModal" class="modal-backdrop" style="display:none">
+  <div class="modal">
+    <h3>Ket noi PLC (MC Protocol - 3E Binary)</h3>
+    <div class="field"><label>Dia chi IP</label><input id="cfgHost"></div>
+    <div class="field"><label>Port</label><input id="cfgPort" type="number"></div>
+    <div class="field"><label>Timeout (ms)</label><input id="cfgTimeout" type="number"></div>
+    <div class="field"><label>Chu ky quet (ms)</label><input id="cfgPoll" type="number"></div>
+    <div class="actions">
+      <button onclick="closeSettings()">Huy</button>
+      <button class="primary" onclick="saveSettings()">Luu</button>
+    </div>
+  </div>
+</div>
+
+<script>
+async function loadList() {
+  const names = await fetch('/api/projects').then(r => r.json());
+  const el = document.getElementById('list');
+  if (names.length === 0) {
+    el.innerHTML = '<p style="color:#aab2c0;text-align:center">Chua co man hinh nao. Tao moi o tren.</p>';
+    return;
+  }
+  el.innerHTML = names.map(n => `
+    <div class="project-card">
+      <span class="name">${n}</span>
+      <span class="actions">
+        <button onclick="location.href='editor.html?project=${encodeURIComponent(n)}'">Sua</button>
+        <button onclick="location.href='runtime.html?project=${encodeURIComponent(n)}'">Chay</button>
+        <button class="danger" onclick="del('${n}')">Xoa</button>
+      </span>
+    </div>`).join('');
+}
+async function del(n) {
+  if (!confirm('Xoa man hinh "' + n + '"?')) return;
+  await fetch('/api/projects/' + encodeURIComponent(n), { method: 'DELETE' });
+  loadList();
+}
+function createNew() {
+  const n = document.getElementById('newName').value.trim();
+  if (!n) return alert('Nhap ten man hinh');
+  location.href = 'editor.html?project=' + encodeURIComponent(n) + '&new=1';
+}
+async function openSettings() {
+  const s = await fetch('/api/config').then(r => r.json());
+  document.getElementById('cfgHost').value = s.config.host;
+  document.getElementById('cfgPort').value = s.config.port;
+  document.getElementById('cfgTimeout').value = s.config.timeoutMs;
+  document.getElementById('cfgPoll').value = s.pollIntervalMs;
+  document.getElementById('settingsModal').style.display = 'flex';
+}
+function closeSettings() { document.getElementById('settingsModal').style.display = 'none'; }
+async function saveSettings() {
+  const body = {
+    host: document.getElementById('cfgHost').value.trim(),
+    port: parseInt(document.getElementById('cfgPort').value, 10),
+    timeoutMs: parseInt(document.getElementById('cfgTimeout').value, 10),
+    pollIntervalMs: parseInt(document.getElementById('cfgPoll').value, 10),
+  };
+  await fetch('/api/config', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify(body) });
+  closeSettings();
+}
+loadList();
+</script>
+</body>
+</html>

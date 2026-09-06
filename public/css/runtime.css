@@ -1,0 +1,26 @@
+.rt-canvas-wrap { overflow: auto; height: calc(100vh - 52px); background: #12161d; padding: 20px; }
+.rt-canvas { position: relative; width: 1200px; height: 800px; background: #232b38; border: 1px solid #3c4759; margin: 0 auto; }
+
+.rwidget { position: absolute; display: flex; align-items: center; justify-content: center; }
+.rw-lamp { border-radius: 50%; border: 2px solid #222; transition: background .15s; }
+.rw-button {
+  background: #3a4358; border: 1px solid #4c5872; border-radius: 4px; color: #e6e9ef;
+  font-weight: 600; cursor: pointer; user-select: none;
+}
+.rw-button:active, .rw-button.pressed { background: #2f6fed; }
+.rw-numeric-display {
+  background: #10151c; border: 1px solid #3c4759; border-radius: 4px; color: #7fd0ff;
+  font-family: 'Consolas', monospace; font-size: 18px; flex-direction: column; gap: 2px;
+}
+.rw-numeric-display .lbl { font-size: 11px; color: #aab2c0; font-family: inherit; }
+.rw-numeric-input {
+  background: #10151c; border: 1px solid #3c4759; border-radius: 4px;
+  flex-direction: column; padding: 6px; gap: 4px;
+}
+.rw-numeric-input .lbl { font-size: 11px; color: #aab2c0; }
+.rw-numeric-input .row { display: flex; gap: 4px; width: 100%; }
+.rw-numeric-input input { width: 100%; background: #1a212b; border: 1px solid #3c4759; color: #e6e9ef; border-radius: 3px; padding: 3px 5px; }
+.rw-numeric-input button { font-size: 11px; padding: 3px 8px; }
+.rw-label { background: transparent; justify-content: flex-start; }
+.rw-rect { background: #2b3342; border: 1px solid #3c4759; }
+.rw-bad { outline: 2px dashed #e74c3c; }

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>FUXA-mini - Thiet ke man hinh</title>
+<link rel="stylesheet" href="css/common.css">
+<link rel="stylesheet" href="css/editor.css">
+</head>
+<body>
+<div class="topbar">
+  <span class="title">FUXA-mini</span>
+  <a href="index.html" class="btn">&larr; Danh sach</a>
+  <input id="projName" style="width:180px" placeholder="Ten man hinh">
+  <button class="primary" onclick="Editor.save()">Luu</button>
+  <button onclick="Editor.runNow()">Chay thu</button>
+  <span class="spacer"></span>
+  <span class="status-wrap"><span id="statusDot" class="status-dot"></span><span id="statusText">--</span></span>
+  <button onclick="Editor.openSettings()">Cai dat PLC</button>
+</div>
+
+<div class="editor-body">
+  <div class="toolbox">
+    <div class="tb-title">Cong cu</div>
+    <button class="tb-item" onclick="Editor.addWidget('lamp')">Den bao (Lamp)</button>
+    <button class="tb-item" onclick="Editor.addWidget('button')">Nut nhan (Button)</button>
+    <button class="tb-item" onclick="Editor.addWidget('numeric-display')">Hien so (Display)</button>
+    <button class="tb-item" onclick="Editor.addWidget('numeric-input')">Nhap so (Set value)</button>
+    <button class="tb-item" onclick="Editor.addWidget('label')">Nhan chu (Label)</button>
+    <button class="tb-item" onclick="Editor.addWidget('rect')">Hinh chu nhat</button>
+  </div>
+
+  <div class="canvas-wrap">
+    <div id="canvas" class="canvas"></div>
+  </div>
+
+  <div class="props" id="props">
+    <div class="tb-title">Thuoc tinh</div>
+    <div id="propsBody" style="color:#aab2c0;font-size:13px">Chon 1 widget de sua thuoc tinh.</div>
+  </div>
+</div>
+
+<div id="settingsModal" class="modal-backdrop" style="display:none">
+  <div class="modal">
+    <h3>Ket noi PLC (MC Protocol - 3E Binary)</h3>
+    <div class="field"><label>Dia chi IP</label><input id="cfgHost"></div>
+    <div class="field"><label>Port</label><input id="cfgPort" type="number"></div>
+    <div class="field"><label>Timeout (ms)</label><input id="cfgTimeout" type="number"></div>
+    <div class="field"><label>Chu ky quet (ms)</label><input id="cfgPoll" type="number"></div>
+    <div class="actions">
+      <button onclick="document.getElementById('settingsModal').style.display='none'">Huy</button>
+      <button class="primary" onclick="Editor.saveSettings()">Luu</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/editor.js"></script>
+</body>
+</html>

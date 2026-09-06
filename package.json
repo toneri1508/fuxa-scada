@@ -1,0 +1,14 @@
+{
+  "name": "fuxa-mini",
+  "version": "1.0.0",
+  "description": "SCADA toi gian - Mitsubishi PLC MC Protocol (3E Binary, TCP/IP)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "ws": "^8.17.0"
+  },
+  "license": "MIT"
+}
