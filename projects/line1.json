@@ -1,0 +1,133 @@
+{
+  "width": 1200,
+  "height": 800,
+  "widgets": [
+    {
+      "id": "w4_mtplfc77",
+      "type": "rect",
+      "x": 277,
+      "y": 43,
+      "w": 388,
+      "h": 108,
+      "props": {
+        "fill": "#2b3342",
+        "stroke": "#3c4759"
+      }
+    },
+    {
+      "id": "w7_mtplfqkv",
+      "type": "lamp",
+      "x": 569,
+      "y": 66,
+      "w": 60,
+      "h": 60,
+      "props": {
+        "device": "Y",
+        "address": "0",
+        "onColor": "#2ecc71",
+        "offColor": "#555555",
+        "label": "Lamp"
+      }
+    },
+    {
+      "id": "w8_mtplfrh5",
+      "type": "button",
+      "x": 314,
+      "y": 50,
+      "w": 110,
+      "h": 40,
+      "props": {
+        "device": "M",
+        "address": "0",
+        "mode": "momentary",
+        "text": "Start"
+      }
+    },
+    {
+      "id": "w9_mtplft9c",
+      "type": "label",
+      "x": 432,
+      "y": 81,
+      "w": 140,
+      "h": 30,
+      "props": {
+        "text": "| |------------(y)",
+        "fontSize": 14,
+        "color": "#e6e9ef"
+      }
+    },
+    {
+      "id": "w1_mtplmsdo",
+      "type": "numeric-display",
+      "x": 680,
+      "y": 73,
+      "w": 120,
+      "h": 44,
+      "props": {
+        "device": "D",
+        "address": "10",
+        "decimals": 0,
+        "unit": "",
+        "label": "T ="
+      }
+    },
+    {
+      "id": "w2_mtpws9jq",
+      "type": "button",
+      "x": 315,
+      "y": 100,
+      "w": 110,
+      "h": 40,
+      "props": {
+        "device": "M",
+        "address": "1",
+        "mode": "momentary",
+        "text": "Stop"
+      }
+    },
+    {
+      "id": "w5_mtpwy03l",
+      "type": "lamp",
+      "x": 73,
+      "y": 65,
+      "w": 60,
+      "h": 60,
+      "props": {
+        "device": "Y",
+        "address": "2",
+        "onColor": "#2ecc71",
+        "offColor": "#555555",
+        "label": "Y2"
+      }
+    },
+    {
+      "id": "w6_mtpwykew",
+      "type": "lamp",
+      "x": 75,
+      "y": 154,
+      "w": 60,
+      "h": 60,
+      "props": {
+        "device": "Y",
+        "address": "1",
+        "onColor": "#2ecc71",
+        "offColor": "#555555",
+        "label": "Lamp"
+      }
+    },
+    {
+      "id": "w7_mtpx7hks",
+      "type": "button",
+      "x": 0,
+      "y": 3,
+      "w": 115,
+      "h": 42,
+      "props": {
+        "device": "M",
+        "address": "0",
+        "mode": "momentary",
+        "text": "Khởi động"
+      }
+    }
+  ]
+}
