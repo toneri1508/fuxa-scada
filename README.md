@@ -1,0 +1,2 @@
+# fuxa-scada
+mini scada
